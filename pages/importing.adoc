@@ -1,0 +1,38 @@
+== Importing
+
+Let's assume the following project.
+
+[source]
+----
+.
+├── src/
+│   ├── module.py
+│   └── util.py
+└── tests/
+    ├── __init__.py
+    └── test_module.py
+----
+
+.Imports in `util.py`
+
+[source,python]
+----
+# full module import
+import module
+# import types from module
+from module import foobar
+----
+
+.Imports in `test_module`
+
+[source,python]
+----
+# full module import
+import src.module
+# import type from module
+from src.module import foobar
+----
+
+This allows imports to work with `pytest` as well. Try to avoid using relative imports as this will mess with `pytests` imports.
+
+

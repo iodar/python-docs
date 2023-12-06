@@ -1,0 +1,47 @@
+== Using pytest to unit test
+
+There are multiple test libraries available to test python code. We will focus on `pytest` as this is my goto library.
+
+=== Installing pytest
+
+`pytest` is a single dependency library and we only need to run `pipenv install --dev pytest` to install it.
+
+=== Setting up pytest
+
+`pytest` has multiple options to support configuration, via command line (cli) and different types of configuration file. We will only focus on using `pytest.ini` configuration file.
+
+Place a new file with the name `pytest.ini` in the root of your project. Assuming your directory structure uses `src` for source code, `tests` for testing code, it would look like this.
+
+[source]
+----
+.
+├── src/
+│   ├── module.py
+│   └── util.py
+├── tests/
+│   └── test_module.py
+└── pytest.ini
+----
+
+Now we have to fill `pytest.ini` with configuration contents
+
+[source,ini]
+----
+[pytest]
+testpaths = tests ;tells pytest to pick up tests from tests folder
+pythonpath = .    ;tells pytest to add root directory to sys.path to make imports work
+----
+
+Now we can run all tests by using `pipenv run pytest`.
+
+=== Set up test script in pipenv file
+
+In order to run the same command every time we can add a command to the `scripts` section of the pipenv file. If there is no `[scripts]` section yet we need to add one. It should look like this.
+
+[source]
+----
+[scripts]
+test = "pipenv run pytest"
+----
+
+

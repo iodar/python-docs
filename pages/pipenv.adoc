@@ -1,0 +1,33 @@
+== Pipenv
+
+When setting up a new project it is highly recommended to use `pipenv` as this allows to install libs and frameworks locally to an environment that is only available to the current project.
+
+=== Setting up
+
+To set up a `pipenv` use `pipenv install`. You can also specify a specific python version by using `pipenv install --python 3.8.10` which will set the `pipenv` required python version to `3.8.10`.
+
+=== Installing dependencies
+
+Lets assume that we want to add a library to the project that will be used by the project at runtime. Lets assume further that we are creating a `CLI` application so we will need a way to parse arguments.
+
+[source]
+----
+pipenv install typed-argument-parser
+----
+
+This will install the package `typed-argument-parser` to the project and add it as a production dependency. This means that this dependency will be necessary to run the module / python application.
+
+=== Installing dev dependencies
+
+Lets assume we want to do some testing. We decided to use `pytest` for that. Now we could add `pytest` as  a regular dependency but as it is not necessary to run the project / application itself it is not a good idea.
+
+We can therefore add this dependency as a development dependency (dev).
+
+To add it we simple do the following.
+
+[source]
+----
+pipenv install --dev pytest
+----
+
+This will install `pytest` as a dev dependency which is only installed if the user types `pipenv install --dev`. Otherwise it is not installed to the `pipenv` because it is not needed to be able to run the main python application.

@@ -1,0 +1,10 @@
+= Python Documentation
+:toc:
+:title: Python Documentation
+:nofooter:
+
+include::pages/importing.adoc[]
+
+include::pages/pipenv.adoc[]
+
+include::pages/pytest.adoc[]
